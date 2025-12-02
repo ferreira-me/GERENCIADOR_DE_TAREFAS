@@ -1,0 +1,462 @@
+/* ===========================
+   RESET BÁSICO
+=========================== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Cores principais */
+  --bg-body: #020617;
+  --bg-surface: #020617;
+  --bg-panel: #020617;
+  --bg-panel-soft: #020617;
+
+  --accent: #7c3aed;
+  --accent-soft: rgba(124, 58, 237, 0.08);
+  --accent-strong: #a855f7;
+
+  --text-main: #e5e7eb;
+  --text-muted: #9ca3af;
+
+  --border-subtle: rgba(148, 163, 184, 0.3);
+  --border-strong: rgba(129, 140, 248, 0.9);
+
+  --success: #4ade80;
+  --success-soft: rgba(22, 163, 74, 0.16);
+
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --radius-full: 999px;
+
+  --shadow-soft: 0 14px 30px rgba(15, 23, 42, 0.6);
+
+  --transition-fast: 0.15s ease-out;
+  --transition-med: 0.22s ease-in-out;
+
+  --font-main: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-main);
+  color: var(--text-main);
+  background:
+    radial-gradient(circle at 0 0, rgba(15, 23, 42, 0.8), transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(30, 64, 175, 0.9), transparent 55%),
+    var(--bg-body);
+  background-attachment: fixed;
+}
+
+/* ===========================
+   APP LAYOUT
+=========================== */
+
+.app {
+  min-height: 100vh;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 32px 18px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+.app-header {
+  position: relative;
+  padding: 18px 22px;
+  border-radius: 20px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-soft);
+}
+
+.app-header h1 {
+  font-size: clamp(1.8rem, 2.2vw + 1rem, 2.2rem);
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.app-header h1::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  max-width: 520px;
+}
+
+/* ===========================
+   MAIN GRID
+=========================== */
+
+.app-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+  gap: 18px;
+}
+
+/* ===========================
+   PANELS
+=========================== */
+
+.panel {
+  background: rgba(15, 23, 42, 0.92);
+  border-radius: var(--radius-lg);
+  padding: 16px 16px 14px;
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.7);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition:
+    border-color var(--transition-med),
+    box-shadow var(--transition-med),
+    transform var(--transition-med),
+    background-color var(--transition-med);
+}
+
+.panel h2 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+}
+
+/* linha minimalista de destaque no topo */
+.panel h2::after {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 2px;
+  margin-top: 6px;
+  border-radius: 999px;
+  background: linear-gradient(to right, var(--accent), transparent);
+}
+
+/* leve destaque ao passar o mouse */
+.panel:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.9);
+}
+
+/* ===========================
+   FORMULÁRIOS
+=========================== */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input {
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  padding: 8px 10px;
+  background: rgba(15, 23, 42, 0.95);
+  color: var(--text-main);
+  font-size: 0.92rem;
+  outline: none;
+  transition:
+    border-color var(--transition-med),
+    box-shadow var(--transition-med),
+    background var(--transition-med),
+    transform var(--transition-fast);
+  appearance: none;
+}
+
+.input::placeholder {
+  color: rgba(148, 163, 184, 0.8);
+}
+
+.input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px rgba(124, 58, 237, 0.6);
+  background: rgba(15, 23, 42, 1);
+  transform: translateY(-1px);
+}
+
+/* select com setinha bem discreta */
+select.input {
+  padding-right: 26px;
+  background-image: linear-gradient(45deg, transparent 50%, var(--accent) 50%),
+    linear-gradient(135deg, var(--accent) 50%, transparent 50%);
+  background-position: calc(100% - 14px) 50%, calc(100% - 9px) 50%;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+}
+
+/* ===========================
+   BOTÃO
+=========================== */
+
+.button {
+  margin-top: 4px;
+  align-self: flex-end;
+  border: none;
+  border-radius: var(--radius-full);
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: var(--accent);
+  color: #f9fafb;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.6);
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background var(--transition-fast),
+    opacity var(--transition-fast);
+}
+
+.button::after {
+  content: '+';
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 26px rgba(79, 70, 229, 0.85);
+  background: var(--accent-strong);
+}
+
+.button:active {
+  transform: translateY(1px);
+  box-shadow: 0 5px 12px rgba(15, 23, 42, 0.8);
+}
+
+/* ===========================
+   LISTAS GENÉRICAS
+=========================== */
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.list-item {
+  padding: 8px 10px;
+  background: rgba(15, 23, 42, 0.98);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(30, 64, 175, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.9rem;
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.list-item:hover {
+  transform: translateY(-1px);
+  border-color: var(--border-strong);
+  background: rgba(15, 23, 42, 1);
+}
+
+/* ===========================
+   CATEGORIAS
+=========================== */
+
+.category-name {
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.badge {
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.76rem;
+  background: var(--accent-soft);
+  color: #c4b5fd;
+  border: 1px solid rgba(129, 140, 248, 0.6);
+}
+
+/* ===========================
+   TAREFAS
+=========================== */
+
+.task-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 4px;
+  max-height: 420px;
+  overflow: auto;
+}
+
+/* scrollbar discreta */
+.task-groups::-webkit-scrollbar {
+  width: 6px;
+}
+.task-groups::-webkit-scrollbar-track {
+  background: transparent;
+}
+.task-groups::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.7);
+  border-radius: 999px;
+}
+
+.task-group {
+  border-radius: var(--radius-lg);
+  padding: 8px 10px 8px;
+  border: 1px solid rgba(30, 64, 175, 0.7);
+  background: rgba(15, 23, 42, 0.98);
+}
+
+.task-group h3 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+/* item de tarefa */
+
+.task-item {
+  padding: 7px 8px;
+}
+
+.task-item label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+/* checkbox simples */
+.task-item input[type='checkbox'] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.task-title {
+  flex: 1;
+  font-size: 0.9rem;
+}
+
+/* pill de status */
+.task-status {
+  font-size: 0.76rem;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+/* concluída */
+.task-completed .task-title {
+  text-decoration: line-through;
+  opacity: 0.55;
+}
+
+.task-completed .task-status {
+  border-color: rgba(74, 222, 128, 0.9);
+  background: var(--success-soft);
+  color: #bbf7d0;
+}
+
+/* ===========================
+   MENSAGENS / ESTADO VAZIO
+=========================== */
+
+p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.panel > p {
+  margin-top: 2px;
+  padding: 7px 9px;
+  border-radius: var(--radius-md);
+  border: 1px dashed rgba(148, 163, 184, 0.5);
+  background: rgba(15, 23, 42, 0.9);
+  font-size: 0.85rem;
+}
+
+/* ===========================
+   RESPONSIVO
+=========================== */
+
+@media (max-width: 840px) {
+  .app {
+    padding-top: 22px;
+  }
+
+  .app-main {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .panel {
+    padding: 14px 14px 12px;
+  }
+
+  .button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-header {
+    padding: 16px 16px 18px;
+  }
+
+  .app-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+}
