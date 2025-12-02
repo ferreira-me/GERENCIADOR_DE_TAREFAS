@@ -1,8 +1,7 @@
 # 📌 Gerenciador de Tarefas por Categoria
 
-<p align="center">
-  <img src="./preview.png" alt="Preview do Projeto" width="800" />
-</p>
+![Preview do Projeto](./gerenciador-tarefas-categorias/preview.png)
+
 
 
 
