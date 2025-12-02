@@ -1,6 +1,9 @@
 # 📌 Gerenciador de Tarefas por Categoria
 
-![Preview do Projeto](./preview.png)
+<p align="center">
+  <img src="./preview.png" alt="Preview do Projeto" width="800" />
+</p>
+
 
 
 Aplicação web desenvolvida em **React + Context API** para organizar tarefas de forma simples, intuitiva e totalmente categorizada.  
