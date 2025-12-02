@@ -1,6 +1,7 @@
 # 📌 Gerenciador de Tarefas por Categoria
 
-![Preview do Projeto](preview.png)
+![Preview do Projeto](./preview.png)
+
 
 Aplicação web desenvolvida em **React + Context API** para organizar tarefas de forma simples, intuitiva e totalmente categorizada.  
 O usuário pode criar categorias, adicionar tarefas e marcar atividades como concluídas — tudo isso com gerenciamento global de estado via Context.
